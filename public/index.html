@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Flashcard App</title>
+	<link rel="stylesheet" type="text/css" href="/style.css">
+
+</head>
+<body>
+
+<header>Flashcards on Cat Care</header>
+
+<ul>
+    <li><a href="/">Home</a></li>
+    <li><a href="/show-flashcard">Show Flashcard Set</a></li>
+    <!-- <li><a href="/front.html">Questions</a></li>
+    <li><a href="/back.html">Answers</a></li> -->
+	<li><a href="/flashcard" target="_blank">Flashcard API</a></li>
+
+</ul>
+
+<img src="http://www.kacpets.com/Data/Sites/1/GalleryImages/WebImages/cat_care.jpg" alt="catcare" width="300" height="360">
+
+<form method="POST" action="/submit">
+	<label>Add a question</label>
+	<textarea name="question"></textarea>
+
+	<label>and answer</label>
+	<textarea name="answer"></textarea> 
+
+	<button>Submit</button>
+</form>
+
+<!-- <div class="flashcardDiv"><a href="/flashcard" target="_blank"></a>
+</div> -->
+
+<script type="text/javascript" src="/server.js"></script>
+</body>
+</html>
