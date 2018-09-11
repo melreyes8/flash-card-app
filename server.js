@@ -1,7 +1,6 @@
 var express = require('express');
 var app = express();
 var mysql = require('mysql');
-// var path = require("path");
 
 // set the view engine to ejs
 app.set('view engine', 'ejs');
@@ -16,9 +15,6 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 app.use(express.static("public"));
-
-
-
 
 // Initializes the connection variable to sync with a MySQL database
 var connection = mysql.createConnection({
@@ -35,23 +31,23 @@ var connection = mysql.createConnection({
 	database: "catcare_db"
   });
 
-  app.get('/', function(req, res){
-	connection.query(
-		"SELECT * FROM flashcard",
-		function(err, response) {
-		  res.render('show', {
-			flashcard: response
-		  });
-		}
-	  );
-  });
+app.post('/submit', function(req, res){
+// res.json(req.body);
+
+connection.query(
+	"INSERT INTO flashcard (question, answer) VALUES (?,?)",
+	[req.body.question, req.body.answer],
+	function(err, response) {
+		res.redirect('/');
+	}
+	);
+});
 
 app.get('/flashcard', function(req, res){
 connection.query(
 	"SELECT * FROM flashcard",
 	function(err, response) {
 		res.json(response);
-		// res.redirect('/');
 	}
 	);
 });
